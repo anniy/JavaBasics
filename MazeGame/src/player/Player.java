@@ -88,11 +88,11 @@ public class Player
 			int yt = ((y + ya) + (((c / 2) * 16)  + 8)) >> 5;
 			
 			if (loadLevel.getTile(xt, yt).solid()) solid = true;
-			if (solid) walking = false;
-			if (loadLevel.getTile(xt, yt) == Tile.block)
+			if (solid) walking = true;
+			/*if (loadLevel.getTile(xt, yt) == Tile.block)
 			{
 				won = 1;
-			}
+			}*/
 			if (loadLevel.getTile(xt, yt) == Tile.finish)
 			{
 				won = 2;

@@ -27,7 +27,7 @@ public class Game extends Canvas implements Runnable
 	private final int HEIGHT = 512;
 	private final int SCALE = 1;
 	private final Dimension SIZE = new Dimension((WIDTH * SCALE), (HEIGHT * SCALE));
-	public final String TITLE = "Maze Game Demo | Res: " + (WIDTH * SCALE) + "x" +  (HEIGHT * SCALE) + " | ";
+	public final String TITLE = "Honeydew Maze | Res: " + (WIDTH * SCALE) + "x" +  (HEIGHT * SCALE) + " | ";
 
 	private JFrame frame;
 	private Thread thread;
@@ -40,8 +40,8 @@ public class Game extends Canvas implements Runnable
 	private Input input;
 	private LoadLevel loadLevel;
 	private Player player;
-	//towa e samo test kakkwo jsaj
-	private int time = 20;
+
+	private int time = 40;
 	
 	public Game()
 	{
@@ -53,7 +53,7 @@ public class Game extends Canvas implements Runnable
 		render = new Render(WIDTH, HEIGHT);
 		input = new Input();
 		addKeyListener(input);
-		loadLevel = new LoadLevel("level.png");
+		loadLevel = new LoadLevel("/map/level.png");
 		player = new Player(loadLevel, (1 * 32), (14 * 32), input);
 	}
 	

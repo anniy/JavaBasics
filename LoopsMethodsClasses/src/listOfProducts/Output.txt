@@ -1,0 +1,4 @@
+8.5 coffee
+2.8 milk
+1.2 apple
+1.2 zele
