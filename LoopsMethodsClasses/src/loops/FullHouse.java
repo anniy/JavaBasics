@@ -1,34 +1,62 @@
 package loops;
 
 public class FullHouse {
+	private static Object[] card = new Object[] {2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'};
+	private static char[] cardSuit = {'\u2663', '\u2666', '\u2665', '\u2660'};
+	private static int count;
+	private static int suits = cardSuit.length;
+	
+	private static int[] combinations = new int [suits];
+	private static int threeCard = 3;
+	private static int twoCard = 2;
+	
+	private static void twoCardSuitComb(int i, int after, Object jCard, String threeCards) {
+		if (i > twoCard) {
+			return;
+		}
+		for (int j = after + 1; j <= suits; j++) {
+			combinations[i-1] = j;
+			if (i == twoCard) {
+				System.out.print(threeCards);
+				for (int j2 = 0; j2 < twoCard; j2++) {
+					System.out.print("" + jCard + cardSuit[combinations[j2] - 1] + " ");
+				}
+				System.out.println();
+				count++;
+			}
+			twoCardSuitComb(i + 1, j, jCard, threeCards);
+		}
+	}
+	
+	private static void threeCardSuitComb(int i, int after, Object iCard, Object jCard) {
+		String threeCards;
+		if (i > threeCard) {
+			return;
+		}
+		for (int j = after + 1; j <= suits; j++) {
+			combinations[i-1] = j;
+			if (i == threeCard) {
+				threeCards = "";
+				for (int j2 = 0; j2 < threeCard; j2++) {
+					threeCards += "" + iCard + cardSuit[combinations[j2] - 1] + " ";
+				}
+				twoCardSuitComb(1, 0, jCard, threeCards);
+			}
+			threeCardSuitComb(i + 1, j, iCard, jCard);
+		}
+	}
+	
 	public static void main(String[] args) {
-		Object[] card = new Object[] {2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'};
-		char[] cardSuit = {'\u2663', '\u2666', '\u2665', '\u2660'};
-		String fullHouse = "";
-		int count = 0;
+		count = 0;
 
 		for (int i = 0; i < card.length; i++) {
 			for (int j = 0; j < card.length; j++) {
 				if (i != j) {
-					for (int k1 = 0; k1 < cardSuit.length-2; k1++) {
-						for (int k2 = k1+1; k2 < cardSuit.length-1; k2++) {
-							for (int k3 = k2+1; k3 < cardSuit.length; k3++) {
-								fullHouse = "" 	+ card[i] + cardSuit[k1] + " " 
-												+ card[i] + cardSuit[k2] + " "
-												+ card[i] + cardSuit[k3] + " ";
-								for (int l1 = 0; l1 < cardSuit.length-1; l1++) {
-									for (int l2 = l1+1; l2 < cardSuit.length; l2++) {
-										System.out.println(fullHouse + card[j] + cardSuit[l1] + " " + card[j] + cardSuit[l2]);
-										count++;
-									}
-								}
-								fullHouse = "";
-							}
-						}
-					}
+					threeCardSuitComb(1, 0, card[i], card[j]);
 				}
 			}
 		}
+		
 		System.out.println(count);
 	}
 }

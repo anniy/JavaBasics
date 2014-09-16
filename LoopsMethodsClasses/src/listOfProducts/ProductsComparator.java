@@ -16,6 +16,5 @@ public class ProductsComparator implements Comparator<Product>{
 		else {
 			return 1;
 		} 
-		
 	}
 }

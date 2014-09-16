@@ -21,7 +21,6 @@ public class ListOfProducts {
 	        Collections.sort(products, new ProductsComparator());
 	        
 	        for (Product product : products) {
-	        	//System.out.println(product.ToStrig());
 				p.write(product.ToStrig() + "\n");
 			}
 	        
@@ -31,6 +30,5 @@ public class ListOfProducts {
 	    catch (FileNotFoundException e) {
 	       System.out.println("Error");
 	    }
-
 	}
 }

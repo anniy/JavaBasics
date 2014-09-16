@@ -8,6 +8,7 @@ public class Product {
 		this.name = name;
 		this.price = price;
 	}
+	
 	public String ToStrig() {
 		return price + " " + name;
 	}
