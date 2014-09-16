@@ -1,3 +1,0 @@
-@ECHO OFF
-javac SumTwoNumbers.java
-java SumTwoNumbers
